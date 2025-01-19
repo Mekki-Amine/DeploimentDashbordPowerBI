@@ -5,7 +5,7 @@ const Sidebar: React.FC = () => {
     return (
         <nav className="sidebar">
             <div className="logo">
-                <img src="/logo.png" alt="Logo BeeCoders" />
+                <img src="logo.png" alt="Logo BeeCoders" />
                 <h4>BeeCoders</h4>
             </div>
             <ul>

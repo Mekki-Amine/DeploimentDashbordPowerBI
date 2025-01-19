@@ -4,7 +4,7 @@ const Dashboard: React.FC = () => {
     return (
         <div className="dashboard-container">
             <header className="header">
-                <img src="/logo.png" alt="Logo" className="logo" />
+                <img src="logo.png" alt="Logo" className="logo" />
                 <div className="user-info">
                     <span>Amine Mekki</span>
                     <i className="fas fa-user-circle"></i>

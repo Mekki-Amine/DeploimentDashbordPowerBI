@@ -8,7 +8,7 @@ const Prediction: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/predict', { tva });
+            const response = await axios.post('http://127.0.0.1:5000/api/predict', { tva });
             setResult(response.data.prediction);
         } catch (error) {
             alert('Erreur lors de la prédiction.');
@@ -18,7 +18,7 @@ const Prediction: React.FC = () => {
     return (
         <div className="prediction-container">
             <header className="header">
-                <img src="/logo.png" alt="Logo" className="logo" />
+                <img src="logo.png" alt="Logo" className="logo" />
                 <div className="user-info">
                     <span>Amine Mekki</span>
                     <i className="fas fa-user-circle"></i>

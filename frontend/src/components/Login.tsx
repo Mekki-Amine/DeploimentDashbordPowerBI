@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { gsap } from 'gsap';
+
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
-    useEffect(() => {
-        gsap.from('.login-container', { opacity: 0, duration: 1, y: -50 });
-    }, []);
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/login', { username, password });
+            const response = await axios.post('http://127.0.0.1:5000/login', { username, password });
             if (response.data.success) {
                 navigate('/dashboard');
                 const audio = new Audio('/sounds/welcome.mp3');
