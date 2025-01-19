@@ -1,0 +1,5 @@
+/* Login.css */
+.fade-in {
+    opacity: 0; /* Hidden by default */
+    transform: translateY(20px); /* Initial position matches GSAP's 'from' state */
+}
