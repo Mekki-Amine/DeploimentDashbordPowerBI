@@ -3,18 +3,21 @@ import axios from 'axios';
 import { gsap } from 'gsap';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-const Login: React.FC = () => {
+import api from '../services/api';
 
+const Login: React.FC = () => {
     useEffect(() => {
-        gsap.to(".fade-in", {
-            opacity: 1,
-            y: 0,
-            duration: 2,
-            stagger: 0.2,
-            ease: "power2.out",
-        });
+        gsap.fromTo(
+            ".login-card",
+            { opacity: 0, scale: 0.8 },
+            { opacity: 1, scale: 1, duration: 1, ease: "power3.out" }
+        );
+        gsap.fromTo(
+            ".form-field",
+            { y: 30, opacity: 0 },
+            { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "power3.out" }
+        );
     }, []);
-    
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -23,10 +26,11 @@ const Login: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://127.0.0.1:5000/login', { username, password });
+            //const response = await axios.post('http://127.0.0.1:5000/login', { username, password });
+            const response = await api.post('/login', { username, password });
             if (response.data.success) {
                 navigate('/dashboard');
-                const audio = new Audio('/sounds/welcome.mp3');
+                const audio = new Audio('/sounds/Welcome.mp3');
                 audio.play();
             } else {
                 alert(response.data.message);
@@ -36,16 +40,14 @@ const Login: React.FC = () => {
         }
     };
 
-
-
-
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold text-center">Se connecter</h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        <div className="login-container">
+            <div className="login-card">
+                <h2 className="login-title">Bienvenue</h2>
+                <p className="login-subtitle">Connectez-vous à votre compte</p>
+                <form onSubmit={handleSubmit} className="login-form">
+                    <div className="form-field">
+                        <label htmlFor="email" className="form-label">
                             Email
                         </label>
                         <input
@@ -54,11 +56,12 @@ const Login: React.FC = () => {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
-                            className="w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 fade-in"
+                            className="form-input"
+                            placeholder="Entrez votre email"
                         />
                     </div>
-                    <div>
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                    <div className="form-field">
+                        <label htmlFor="password" className="form-label">
                             Mot de passe
                         </label>
                         <input
@@ -67,16 +70,17 @@ const Login: React.FC = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            className="w-full p-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 fade-in"
+                            className="form-input"
+                            placeholder="Entrez votre mot de passe"
                         />
                     </div>
-                    <button
-                        type="submit"
-                        className="w-full py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 fade-in"
-                    >
-                        Se connecter
+                    <button type="submit" className="login-button">
+                        Connexion
                     </button>
                 </form>
+                <p className="login-footer">
+                    Pas de compte ? <a href="#" className="signup-link">Inscrivez-vous</a>
+                </p>
             </div>
         </div>
     );

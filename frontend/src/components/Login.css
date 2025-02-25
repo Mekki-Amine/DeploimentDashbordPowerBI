@@ -1,5 +1,128 @@
 /* Login.css */
-.fade-in {
-    opacity: 0; /* Hidden by default */
-    transform: translateY(20px); /* Initial position matches GSAP's 'from' state */
+
+/* Global background */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e3a8a, #6d28d9, #111827);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Container styling */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Login card */
+.login-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Title */
+.login-title {
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+/* Subtitle */
+.login-subtitle {
+    font-size: 1rem;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+}
+
+/* Form fields */
+.form-field {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-label {
+    font-size: 0.9rem;
+    color: #e2e8f0;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Button styling */
+.login-button {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    background: linear-gradient(135deg, #6d28d9, #1e3a8a);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #1e3a8a, #6d28d9);
+}
+
+/* Footer */
+.login-footer {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: #a1a1aa;
+}
+
+.signup-link {
+    color: #818cf8;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.signup-link:hover {
+    color: #6366f1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

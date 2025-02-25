@@ -3,3 +3,7 @@ Flask-Cors
 joblib
 numpy
 Werkzeug
+
+gunicorn
+
+flask-restful
